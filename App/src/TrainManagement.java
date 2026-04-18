@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class TrainManagement {
 
@@ -17,7 +15,7 @@ public class TrainManagement {
 
     public static void main(String[] args) {
 
-        System.out.println("=== UC9: Group Bogies by Type ===");
+        System.out.println("=== UC10: Count Total Seats in Train ===");
 
         List<Bogie> bogies = new ArrayList<>();
 
@@ -25,25 +23,17 @@ public class TrainManagement {
         bogies.add(new Bogie("AC Chair", 56));
         bogies.add(new Bogie("First Class", 24));
         bogies.add(new Bogie("Sleeper", 70));
-        bogies.add(new Bogie("AC Chair", 60));
 
-        System.out.println("All Bogies:");
+        System.out.println("Bogies in Train:");
         for (Bogie b : bogies) {
             System.out.println(b.name + " -> " + b.capacity);
         }
 
-        Map<String, List<Bogie>> groupedBogies =
-                bogies.stream()
-                        .collect(Collectors.groupingBy(b -> b.name));
+        int totalSeats = bogies.stream()
+                .map(b -> b.capacity)
+                .reduce(0, (a, b) -> a + b);
 
-        System.out.println("\nGrouped Bogies:");
-        for (Map.Entry<String, List<Bogie>> entry : groupedBogies.entrySet()) {
-            System.out.println("Bogie Type: " + entry.getKey());
-            for (Bogie b : entry.getValue()) {
-                System.out.println("Capacity -> " + b.capacity);
-            }
-        }
-
-        System.out.println("UC9 grouping completed...");
+        System.out.println("Total Seating Capacity of Train: " + totalSeats);
+        System.out.println("UC10 aggregation completed...");
     }
 }
