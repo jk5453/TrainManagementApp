@@ -1,31 +1,21 @@
+import java.util.Arrays;
+
 public class TrainManagement {
 
     public static void main(String[] args) {
 
-        System.out.println("=== UC16: Manual Sorting using Bubble Sort ===");
+        System.out.println("=== UC17: Sort Bogie Names Using Arrays.sort() ===");
 
-        int[] capacities = {72, 56, 24, 70, 60};
+        String[] bogieNames = {"Sleeper", "AC Chair", "First Class", "General", "Luxury"};
 
-        System.out.println("Original Capacities:");
-        for (int c : capacities) {
-            System.out.println(c);
-        }
+        System.out.println("Original Bogie Names:");
+        System.out.println(Arrays.toString(bogieNames));
 
-        for (int i = 0; i < capacities.length - 1; i++) {
-            for (int j = 0; j < capacities.length - i - 1; j++) {
-                if (capacities[j] > capacities[j + 1]) {
-                    int temp = capacities[j];
-                    capacities[j] = capacities[j + 1];
-                    capacities[j + 1] = temp;
-                }
-            }
-        }
+        Arrays.sort(bogieNames);
 
-        System.out.println("\nSorted Capacities (Ascending):");
-        for (int c : capacities) {
-            System.out.println(c);
-        }
+        System.out.println("Sorted Bogie Names:");
+        System.out.println(Arrays.toString(bogieNames));
 
-        System.out.println("UC16 sorting completed...");
+        System.out.println("UC17 sorting completed...");
     }
 }
